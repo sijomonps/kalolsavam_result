@@ -349,7 +349,7 @@ export const guidelines: GuidelineSection[] = [
         ],
       },
       {
-        heading: "Off Stage — Poetry Writing",
+        heading: "Off Stage — Poetry Writing (Category 4)",
         items: ["Maximum of 14 lines.", "Language: English only."],
       },
     ],
