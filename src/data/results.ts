@@ -2,6 +2,7 @@
 // Just change winners, add events, or update the lastUpdated timestamp.
 
 export const eventInfo = {
+  // TODO: Update dates/contact details as needed.
   title: "Ragolsavam 2026",
   tagline: "",
   subtitle: "Official Results & Information Portal",
@@ -33,6 +34,7 @@ export type Category = {
 const pending = (id: string, name: string): EventResult => ({ id, name, winners: [] });
 
 export const categories: Category[] = [
+  // TODO: Replace pending() with winners once results are announced.
   {
     id: "1",
     label: "Category 1 — Infants (Below 3 Years)",
@@ -174,6 +176,7 @@ export type GuidelineSection = {
 };
 
 export const guidelines: GuidelineSection[] = [
+  // TODO: Update guidelines text if rules change.
   {
     title: "Category 1 & 2 — Infants & Kiddies",
     subtitle:
