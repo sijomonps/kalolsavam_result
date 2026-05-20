@@ -36,7 +36,7 @@ const toWinners = (names: string[]): Winner[] =>
 
 // Fill winners here using only names; keep arrays empty for "Results awaited".
 const winnersByEventId: Record<string, string[]> = {
-  "c1-fancy-dress": ["ANN MARY NELSON - JCI KALAPLAMATTOM BLUES CENTRAL", "THOMAS ABRAHAM JOSEPH - JCI PATHANAMTHITTA QUEENS, DEVIKA R SOMAN - JCI KURUPPINTHARA", "ANNNNN - JCI NNNNNNNNN"],
+  "c1-fancy-dress": [],
   "c1-action-song": [],
   "c1-smiling": [],
   "c1-colouring": [],
