@@ -331,7 +331,6 @@ export const guidelines: GuidelineSection[] = [
           "Time limit: 3 minutes.",
         ],
       },
-      { heading: "Fancy Dress", items: ["The dialogue has no significance."] },
       { heading: "JCI Creed", items: ["Time limit: 2 minutes (invocation)."] },
       {
         heading: "Off Stage — Water Colour Painting",
