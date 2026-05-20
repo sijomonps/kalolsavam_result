@@ -7,6 +7,29 @@ const positionMeta = {
   3: { label: "3rd", icon: Award, ring: "ring-border", bg: "bg-secondary text-secondary-foreground" },
 } as const;
 
+const ordinal = (value: number): string => {
+  const mod100 = value % 100;
+  if (mod100 >= 11 && mod100 <= 13) return `${value}th`;
+  switch (value % 10) {
+    case 1:
+      return `${value}st`;
+    case 2:
+      return `${value}nd`;
+    case 3:
+      return `${value}rd`;
+    default:
+      return `${value}th`;
+  }
+};
+
+const getPositionMeta = (position: number) =>
+  positionMeta[position as 1 | 2 | 3] ?? {
+    label: ordinal(position),
+    icon: Award,
+    ring: "ring-border",
+    bg: "bg-secondary text-secondary-foreground",
+  };
+
 export function ResultCard({ event }: { event: EventResult }) {
   return (
     <article className="relative rounded-2xl border border-border bg-card p-5 shadow-card transition-shadow hover:shadow-soft">
@@ -23,7 +46,7 @@ export function ResultCard({ event }: { event: EventResult }) {
       ) : (
         <ul className="mt-3 space-y-2">
           {event.winners.map((w) => {
-            const meta = positionMeta[w.position];
+            const meta = getPositionMeta(w.position);
             const Icon = meta.icon;
             return (
               <li

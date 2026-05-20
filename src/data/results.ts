@@ -14,7 +14,7 @@ export const eventInfo = {
   lastUpdated: "2026-01-15T10:30:00",
 };
 
-export type Winner = { position: 1 | 2 | 3; name: string; chapter?: string };
+export type Winner = { position: number; name: string; chapter?: string };
 export type EventResult = {
   id: string;
   name: string;
@@ -30,8 +30,95 @@ export type Category = {
   events: EventResult[];
 };
 
+// Helpers to keep event updates small and consistent.
+const toWinners = (names: string[]): Winner[] =>
+  names.map((name, index) => ({ position: index + 1, name }));
+
+// Fill winners here using only names; keep arrays empty for "Results awaited".
+const winnersByEventId: Record<string, string[]> = {
+  "c1-fancy-dress": [],
+  "c1-action-song": [],
+  "c1-smiling": [],
+  "c1-colouring": [],
+
+  "c2-fancy-dress": [],
+  "c2-action-song": [],
+  "c2-cinematic-dance": [],
+  "c2-colouring": [],
+
+  "c3-elocution-eng": [],
+  "c3-solo-song": [],
+  "c3-jci-creed": [],
+  "c3-cinematic-dance": [],
+  "c3-fashion-show": [],
+  "c3-painting": [],
+  "c3-pencil-drawing": [],
+
+  "c4-elocution-eng": [],
+  "c4-cinematic-dance": [],
+  "c4-jci-creed": [],
+  "c4-solo-song": [],
+  "c4-monoact": [],
+  "c4-fashion-show": [],
+  "c4-recitation-eng": [],
+  "c4-recitation-mal": [],
+  "c4-painting": [],
+  "c4-pencil-drawing": [],
+  "c4-poetry": [],
+
+  "c5-extempore-eng": [],
+  "c5-extempore-mal": [],
+  "c5-cinematic-dance": [],
+  "c5-jci-creed": [],
+  "c5-solo-song": [],
+  "c5-monoact": [],
+  "c5-recitation-mal": [],
+  "c5-recitation-eng": [],
+  "c5-fashion-show": [],
+  "c5-painting": [],
+  "c5-pencil-drawing": [],
+
+  "c6-extempore-mal": [],
+  "c6-extempore-eng": [],
+  "c6-cinematic-dance": [],
+  "c6-recitation-eng": [],
+  "c6-recitation-mal": [],
+  "c6-solo-song": [],
+
+  "c7-fashion-show": [],
+  "c7-thiruvathira": [],
+  "c7-treasure-hunt": [],
+  "c7-group-dance": [],
+  "c7-nadan-pattu": [],
+  "c7-skit": [],
+  "c7-couple-dance": [],
+  "c7-mobile-photography": [],
+  "c7-rubiks-cube": [],
+
+  "c8-solo-song": [],
+  "c8-saree-draping": [],
+  "c8-extempore-mal": [],
+  "c8-tie-a-tie": [],
+  "c8-mimicry": [],
+
+  "c9-group-dance": [],
+  "c9-mime": [],
+};
+
+const event = (
+  id: string,
+  name: string,
+  winners: string[] | undefined = undefined,
+  options: Pick<EventResult, "isNew"> = {},
+): EventResult => ({
+  id,
+  name,
+  winners: toWinners(winners ?? winnersByEventId[id] ?? []),
+  ...options,
+});
+
 // Helper for events that don't have results published yet.
-const pending = (id: string, name: string): EventResult => ({ id, name, winners: [] });
+const pending = (id: string, name: string): EventResult => event(id, name);
 
 export const categories: Category[] = [
   // TODO: Replace pending() with winners once results are announced.
