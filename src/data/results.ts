@@ -331,7 +331,6 @@ export const guidelines: GuidelineSection[] = [
           "Time limit: 3 minutes.",
         ],
       },
-      { heading: "Fancy Dress", items: ["The dialogue has no significance."] },
       { heading: "JCI Creed", items: ["Time limit: 2 minutes (invocation)."] },
       {
         heading: "Off Stage — Water Colour Painting",
@@ -350,7 +349,7 @@ export const guidelines: GuidelineSection[] = [
         ],
       },
       {
-        heading: "Off Stage — Poetry Writing",
+        heading: "Off Stage — Poetry Writing (Category 4)",
         items: ["Maximum of 14 lines.", "Language: English only."],
       },
     ],
