@@ -31,6 +31,8 @@ const getPositionMeta = (position: number) =>
   };
 
 export function ResultCard({ event }: { event: EventResult }) {
+  const winners = Array.isArray(event.winners) ? event.winners : [];
+
   return (
     <article className="relative rounded-2xl border border-border bg-card p-5 shadow-card transition-shadow hover:shadow-soft">
       {event.isNew && (
@@ -39,13 +41,13 @@ export function ResultCard({ event }: { event: EventResult }) {
         </span>
       )}
       <h3 className="font-display text-lg font-bold text-primary">{event.name}</h3>
-      {event.winners.length === 0 ? (
+      {winners.length === 0 ? (
         <p className="mt-3 rounded-xl bg-secondary/60 px-3 py-2 text-xs font-medium uppercase tracking-wider text-muted-foreground">
           Results awaited
         </p>
       ) : (
         <ul className="mt-3 space-y-2">
-          {event.winners.map((w) => {
+          {winners.map((w) => {
             const meta = getPositionMeta(w.position);
             const Icon = meta.icon;
             return (
